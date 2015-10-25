@@ -1,0 +1,33 @@
+{
+  "name": "dual-ephemeral",
+  "version": "0.0.0",
+  "description": "Ephemeral connections for dualapi",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "lint": "jshint *.js test",
+    "coverage": "istanbul cover test/index.js",
+    "test": "node test/all.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plediii/dual-ephemeral.git"
+  },
+  "keywords": [
+    "dualapi",
+    "ephemeral"
+  ],
+  "author": "Paul J. Ledbetter III",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plediii/dual-ephemeral.git/issues"
+  },
+  "homepage": "https://github.com/plediii/dual-ephemeral.git",
+  "devDependencies": {
+    "dual-protocol": "^0.4.6",
+    "istanbul": "^0.3.20",
+    "jshint": "^2.8.0",
+    "pre-commit": "^1.1.1",
+    "tape": "^4.2.0"
+  }
+}
