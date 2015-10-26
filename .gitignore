@@ -6,3 +6,4 @@ rules.json
 rules.json
 resources.json
 s3location.json
+coverage/
