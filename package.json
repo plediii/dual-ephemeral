@@ -27,6 +27,7 @@
     "dual-protocol": "^0.4.6",
     "istanbul": "^0.3.20",
     "jshint": "^2.8.0",
+    "lodash": "^3.10.1",
     "pre-commit": "^1.1.1",
     "tape": "^4.2.0"
   }
