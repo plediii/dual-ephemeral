@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "jshint *.js test",
     "coverage": "istanbul cover test/index.js",
-    "test": "node test/all.js"
+    "test": "node test"
   },
   "repository": {
     "type": "git",
