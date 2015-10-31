@@ -71,6 +71,19 @@ test('dual-ephemeral exit', function (t) {
         s.pass('Sent two exit events');
     });
 
+    test('should emit exit on second exit if re-enter on exit', function (s) {
+        s.plan(3);
+        this.d.mount(['eph-listener', 'exit'], function (body, ctxt) {
+            ctxt.send(['eph', 'enter', 'host'], ['eph-listener']);
+            s.pass('ephemeral exit event');
+        });
+        this.d.send(['eph', 'register', 'host']);
+        this.d.send(['eph', 'enter', 'host'], ['eph-listener']);
+        this.d.send(['eph', 'exit', 'host'], ['eph-listener']);
+        this.d.send(['eph', 'exit', 'host'], ['eph-listener']);
+        s.pass('Sent two exit events');
+    });
+
     test('should emit exit event with enter body', function (s) {
         s.plan(2);
         this.d.mount(['eph-listener', 'exit'], function (body, ctxt) {
