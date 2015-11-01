@@ -17,7 +17,7 @@ module.exports = function (Domain, libs) {
                     var enterHandler = function (body, ctxt) {
                         var ephemeralGroup = ctxt.from;
                         if (clientSubscriptions.listeners(ephemeralGroup) < 1) {
-                            clientSubscriptions.on(ephemeralGroup, function () {
+                            clientSubscriptions.once(ephemeralGroup, function () {
                                 ctxt.send(ephemeralGroup.concat('exit'), [], body, {
                                     nodeRoute: hostRoute
                                 });
@@ -30,7 +30,6 @@ module.exports = function (Domain, libs) {
                     var exitRoute = route.concat(['exit']).concat(hostRoute)
                     var exitGroup = function (ephemeralGroup) {
                         clientSubscriptions.send(ephemeralGroup);
-                        clientSubscriptions.removeAllListeners(ephemeralGroup);
                     };
                     var exitHandler = function (body, ctxt) {
                         exitGroup(ctxt.from);
