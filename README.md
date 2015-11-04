@@ -21,6 +21,12 @@ Ephemeral groups broadcast *enter* and *exit* events.
     console.log('New group member in ', yyyy, ':', ctxt.options.nodeRoute);
     console.log('Payload: ', body);
   });
+
+  domain.mount(['group', yyyy, 'exit'], function (body, ctxt) {
+    console.log('Group member in ', yyyy, ' exited:', ctxt.options.nodeRoute);
+    console.log('Payload: ', body);
+  });
+
 ```
 
 After registering a client, 
@@ -29,8 +35,17 @@ After registering a client,
 ```
 the client may be added to ephemeral groups: 
 ```javascript
-   domain.send(['e', 'enter'], ['group', yyyy], { some: 'data' });
+   domain.send(['e', 'enter', 'client', xxxx], ['group', yyyy], { some: 'data' });
 ```
+
+The client may exit manually, or disconnect:
+```javascript
+   domain.send(['e', 'exit', 'client', xxxx], ['group', yyyy]);
+   domain.send(['disconnect', 'client', xxxx]);
+```
+
+Whichever happens first, ephemeral controller will emit an exit event
+with the original enter payload.
 
 
 
