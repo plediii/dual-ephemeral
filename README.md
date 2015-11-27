@@ -2,8 +2,6 @@
 
 Extend [dualapi](https://github.com/plediii/dualapi) domains with ephemeral nodes.  
 
-Any [dual-protocol](https://github.com/plediii/dual-protocol) domain (including [dualapi](https://github.com/plediii/dualapi)), can be extended with dual-broadcast.
-
 ```javascript
 var dual = require('dual-protocol').use(require('dual-ephemeral'));
 ```
