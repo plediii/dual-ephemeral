@@ -11,6 +11,14 @@ Domains with this extension can add ephemeral hosts:
 var domain = dual();
 domain.ephemeral(['e']);
 ```
+After registering a client, 
+```javascript
+  domain.send(['e', 'register', 'client', xxxx]);
+```
+the client may be added to ephemeral groups: 
+```javascript
+   domain.send(['e', 'enter', 'client', xxxx], ['group', yyyy], { some: 'data' });
+```
 
 Ephemeral groups broadcast *enter* and *exit* events.
 
@@ -25,15 +33,6 @@ Ephemeral groups broadcast *enter* and *exit* events.
     console.log('Payload: ', body);
   });
 
-```
-
-After registering a client, 
-```javascript
-  domain.send(['e', 'register', 'client', xxxx]);
-```
-the client may be added to ephemeral groups: 
-```javascript
-   domain.send(['e', 'enter', 'client', xxxx], ['group', yyyy], { some: 'data' });
 ```
 
 The client may exit manually, or disconnect:
